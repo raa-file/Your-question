@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>اصنعي سؤالك | مبادرة صياغة الأسئلة</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cg fill='%235B3FD0'%3E%3Cpath d='M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z' opacity='.5'/%3E%3Cpath d='M12 18.25C12.4142 18.25 12.75 18.5858 12.75 19V21.9727C12.5024 21.991 12.2523 22 12 22C11.7477 22 11.4976 21.991 11.25 21.9727V19C11.25 18.5858 11.5858 18.25 12 18.25Z'/%3E%3Cpath d='M12 9.25C12.4142 9.25 12.75 9.58579 12.75 10V11.25H14C14.4142 11.25 14.75 11.5858 14.75 12C14.75 12.4142 14.4142 12.75 14 12.75H12.75V14C12.75 14.4142 12.4142 14.75 12 14.75C11.5858 14.75 11.25 14.4142 11.25 14V12.75H10C9.58579 12.75 9.25 12.4142 9.25 12C9.25 11.5858 9.58579 11.25 10 11.25H11.25V10C11.25 9.58579 11.5858 9.25 12 9.25Z'/%3E%3Cpath d='M5 11.25C5.41421 11.25 5.75 11.5858 5.75 12C5.75 12.4142 5.41421 12.75 5 12.75H2.02734C2.00899 12.5024 2 12.2523 2 12C2 11.7477 2.00899 11.4976 2.02734 11.25H5Z'/%3E%3Cpath d='M21.9727 11.25C21.991 11.4976 22 11.7477 22 12C22 12.2523 21.991 12.5024 21.9727 12.75H19C18.5858 12.75 18.25 12.4142 18.25 12C18.25 11.5858 18.5858 11.25 19 11.25H21.9727Z'/%3E%3Cpath d='M12 2C12.2523 2 12.5024 2.00899 12.75 2.02734V5C12.75 5.41421 12.4142 5.75 12 5.75C11.5858 5.75 11.25 5.41421 11.25 5V2.02734C11.4976 2.00899 11.7477 2 12 2Z'/%3E%3C/g%3E%3C/svg%3E">
@@ -26,18 +27,6 @@
   --shadow:0 18px 40px -22px rgba(52,36,140,.45);
   --r-xl:28px; --r-lg:20px; --r-md:14px; --r-sm:10px;
   color-scheme: light;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --ink:#EEF0FA; --ink-2:#B4BBD3; --ink-3:#7F88A6;
-    --paper:#12152A; --surface:#1B1F38; --surface-2:#22274A; --line:#2F3560;
-    --violet:#9A86FF; --violet-ink:#16123A; --violet-2:#B7A9FF; --lav:#2A2560;
-    --sun:#FFC24D; --sun-soft:#3A2F12; --sun-ink:#FFD98A;
-    --mint:#3DD39E; --mint-soft:#123A2E;
-    --rose:#FF7A80; --rose-soft:#3D1A22;
-    --shadow:0 18px 40px -22px rgba(0,0,0,.7);
-    color-scheme: dark;
-  }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -373,7 +362,7 @@ const ICONS = {"home": "<g fill=\"currentColor\"><path d=\"M2 12.2039C2 9.91549 
 const ic = (n, cls = 'i') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]}</svg>`;
 const DEMO = !CONFIG.SUPABASE_URL || !CONFIG.SUPABASE_ANON_KEY;
 
-let GRADES = ['الرابع الابتدائي','الخامس الابتدائي','السادس الابتدائي','الأول المتوسط','الثاني المتوسط','الثالث المتوسط'];
+let GRADES = ['الأول المتوسط','الثاني المتوسط','الثالث المتوسط'];
 let SUBJECTS = ['الرياضيات','العلوم','لغتي','اللغة الإنجليزية','الدراسات الاجتماعية','الدراسات الإسلامية','المهارات الرقمية'];
 const LETTERS = ['أ','ب','ج','د'];
 const TF = ['صح','خطأ'];
@@ -405,21 +394,21 @@ function friendlyError(e){
    ===================================================================== */
 const DEMO_SEED = [
   {author_alias:'نجمة', grade:'الثاني المتوسط', subject:'الرياضيات', lesson:'حل المعادلات بخطوة واحدة', type:'mcq', question_text:'ما قيمة س في المعادلة: س + ٧ = ١٢ ؟', options:['٥','١٩','٧','٨٤'], correct_index:0, explanation:'نطرح ٧ من الطرفين: س = ١٢ − ٧ = ٥.', status:'approved', attempts:42, correct_attempts:35},
-  {author_alias:'قطرة', grade:'الخامس الابتدائي', subject:'العلوم', lesson:'دورة الماء في الطبيعة', type:'mcq', question_text:'تتحول المياه من الحالة السائلة إلى الحالة الغازية بعملية:', options:['التكثف','التبخر','التجمد','الانصهار'], correct_index:1, explanation:'التبخر هو تحوّل السائل إلى غاز عند اكتسابه حرارة.', status:'approved', attempts:31, correct_attempts:27},
-  {author_alias:'ريشة', grade:'السادس الابتدائي', subject:'لغتي', lesson:'الهمزة المتوسطة', type:'mcq', question_text:'أي الكلمات التالية كُتبت فيها الهمزة المتوسطة كتابة صحيحة؟', options:['سُئِل','سُؤِل','سُأِل','سُءِل'], correct_index:0, explanation:'الهمزة مكسورة، والكسرة أقوى الحركات، فتُكتب على نبرة (ئـ).', status:'approved', attempts:24, correct_attempts:15},
-  {author_alias:'زهرة', grade:'الرابع الابتدائي', subject:'العلوم', lesson:'حاجات النبات', type:'tf', question_text:'تصنع النباتات غذاءها بنفسها بعملية البناء الضوئي.', options:TF, correct_index:0, explanation:'تستخدم النباتات ضوء الشمس والماء وثاني أكسيد الكربون لصنع غذائها.', status:'approved', attempts:19, correct_attempts:18},
+  {author_alias:'قطرة', grade:'الثاني المتوسط', subject:'العلوم', lesson:'دورة الماء في الطبيعة', type:'mcq', question_text:'تتحول المياه من الحالة السائلة إلى الحالة الغازية بعملية:', options:['التكثف','التبخر','التجمد','الانصهار'], correct_index:1, explanation:'التبخر هو تحوّل السائل إلى غاز عند اكتسابه حرارة.', status:'approved', attempts:31, correct_attempts:27},
+  {author_alias:'ريشة', grade:'الثالث المتوسط', subject:'لغتي', lesson:'الهمزة المتوسطة', type:'mcq', question_text:'أي الكلمات التالية كُتبت فيها الهمزة المتوسطة كتابة صحيحة؟', options:['سُئِل','سُؤِل','سُأِل','سُءِل'], correct_index:0, explanation:'الهمزة مكسورة، والكسرة أقوى الحركات، فتُكتب على نبرة (ئـ).', status:'approved', attempts:24, correct_attempts:15},
+  {author_alias:'زهرة', grade:'الأول المتوسط', subject:'العلوم', lesson:'حاجات النبات', type:'tf', question_text:'تصنع النباتات غذاءها بنفسها بعملية البناء الضوئي.', options:TF, correct_index:0, explanation:'تستخدم النباتات ضوء الشمس والماء وثاني أكسيد الكربون لصنع غذائها.', status:'approved', attempts:19, correct_attempts:18},
   {author_alias:'فراشة', grade:'الأول المتوسط', subject:'اللغة الإنجليزية', lesson:'Present Simple', type:'mcq', question_text:'Choose the correct word: She ___ to school every day.', options:['goes','go','going','gone'], correct_index:0, explanation:'مع الضمير She في المضارع البسيط نضيف es إلى الفعل go.', status:'approved', attempts:27, correct_attempts:20},
-  {author_alias:'نخلة', grade:'السادس الابتدائي', subject:'الدراسات الاجتماعية', lesson:'توحيد المملكة', type:'mcq', question_text:'في أي عام هجري أُعلن توحيد المملكة العربية السعودية؟', options:['١٣١٩هـ','١٣٥١هـ','١٣٤٤هـ','١٣٧٣هـ'], correct_index:1, explanation:'أُعلن توحيد المملكة عام ١٣٥١هـ الموافق ١٩٣٢م.', status:'approved', attempts:22, correct_attempts:14},
+  {author_alias:'نخلة', grade:'الثالث المتوسط', subject:'الدراسات الاجتماعية', lesson:'توحيد المملكة', type:'mcq', question_text:'في أي عام هجري أُعلن توحيد المملكة العربية السعودية؟', options:['١٣١٩هـ','١٣٥١هـ','١٣٤٤هـ','١٣٧٣هـ'], correct_index:1, explanation:'أُعلن توحيد المملكة عام ١٣٥١هـ الموافق ١٩٣٢م.', status:'approved', attempts:22, correct_attempts:14},
   {author_alias:'بوصلة', grade:'الأول المتوسط', subject:'الرياضيات', lesson:'الأعداد الأولية', type:'tf', question_text:'العدد ١ عدد أولي.', options:TF, correct_index:1, explanation:'العدد الأولي له عاملان مختلفان فقط (١ ونفسه)، أما العدد ١ فله عامل واحد.', status:'approved', attempts:36, correct_attempts:21},
   {author_alias:'مجرّة', grade:'الثالث المتوسط', subject:'العلوم', lesson:'الخلية', type:'mcq', question_text:'الوحدة الأساسية في بناء جسم الكائن الحي هي:', options:['النسيج','العضو','الخلية','الجهاز'], correct_index:2, explanation:'تتكوّن جميع الكائنات الحية من خلايا، وتتجمع الخلايا لتكوّن الأنسجة ثم الأعضاء.', status:'approved', attempts:14, correct_attempts:12},
-  {author_alias:'لؤلؤة', grade:'الرابع الابتدائي', subject:'الدراسات الإسلامية', lesson:'أركان الإسلام', type:'mcq', question_text:'كم عدد أركان الإسلام؟', options:['ثلاثة','أربعة','خمسة','ستة'], correct_index:2, explanation:'أركان الإسلام خمسة: الشهادتان، والصلاة، والزكاة، والصوم، والحج.', status:'approved', attempts:17, correct_attempts:17},
+  {author_alias:'لؤلؤة', grade:'الأول المتوسط', subject:'الدراسات الإسلامية', lesson:'أركان الإسلام', type:'mcq', question_text:'كم عدد أركان الإسلام؟', options:['ثلاثة','أربعة','خمسة','ستة'], correct_index:2, explanation:'أركان الإسلام خمسة: الشهادتان، والصلاة، والزكاة، والصوم، والحج.', status:'approved', attempts:17, correct_attempts:17},
   {author_alias:'شيفرة', grade:'الثاني المتوسط', subject:'المهارات الرقمية', lesson:'الأمن الرقمي', type:'mcq', question_text:'أيٌّ مما يلي يُعدّ كلمة مرور قوية؟', options:['123456','اسمي الأول','Sa#7wq!2Lm','تاريخ ميلادي'], correct_index:2, explanation:'كلمة المرور القوية طويلة وتجمع حروفًا كبيرة وصغيرة وأرقامًا ورموزًا، ولا ترتبط بمعلومات شخصية.', status:'approved', attempts:12, correct_attempts:11},
-  {author_alias:'نجمة', grade:'الخامس الابتدائي', subject:'الرياضيات', lesson:'ضرب الكسور العشرية', type:'mcq', question_text:'ناتج ٠٫٥ × ٤ يساوي:', options:['٢','٠٫٢','٢٠','٤٫٥'], correct_index:0, explanation:'٠٫٥ هي النصف، ونصف ٤ يساوي ٢.', status:'approved', attempts:9, correct_attempts:7},
+  {author_alias:'نجمة', grade:'الثاني المتوسط', subject:'الرياضيات', lesson:'ضرب الكسور العشرية', type:'mcq', question_text:'ناتج ٠٫٥ × ٤ يساوي:', options:['٢','٠٫٢','٢٠','٤٫٥'], correct_index:0, explanation:'٠٫٥ هي النصف، ونصف ٤ يساوي ٢.', status:'approved', attempts:9, correct_attempts:7},
   {author_alias:'ريشة', grade:'الأول المتوسط', subject:'لغتي', lesson:'الفعل وأزمنته', type:'tf', question_text:'الفعل المضارع يدل على حدث وقع وانتهى.', options:TF, correct_index:1, explanation:'الفعل الذي يدل على حدث وقع وانتهى هو الفعل الماضي، أما المضارع فيدل على الحاضر أو المستقبل.', status:'approved', attempts:11, correct_attempts:9},
   {author_alias:'غيمة', grade:'الثاني المتوسط', subject:'العلوم', lesson:'الطاقة وتحولاتها', type:'mcq', question_text:'عند احتكاك اليدين تتحول الطاقة الحركية إلى طاقة:', options:['حرارية','نووية','كيميائية','مغناطيسية'], correct_index:0, explanation:'الاحتكاك يحوّل جزءًا من الطاقة الحركية إلى طاقة حرارية، لذلك نشعر بالدفء.', status:'pending', attempts:0, correct_attempts:0},
-  {author_alias:'قمر', grade:'السادس الابتدائي', subject:'الرياضيات', lesson:'النسبة المئوية', type:'mcq', question_text:'٢٥٪ من ٨٠ تساوي:', options:['٢٠','٢٥','٣٢','٤٠'], correct_index:0, explanation:'٢٥٪ تعني الربع، وربع ٨٠ يساوي ٢٠.', status:'pending', attempts:0, correct_attempts:0},
-  {author_alias:'وردة', grade:'الخامس الابتدائي', subject:'الدراسات الإسلامية', lesson:'آداب المسجد', type:'tf', question_text:'من آداب دخول المسجد تقديم الرجل اليمنى.', options:TF, correct_index:0, explanation:'يُستحب تقديم الرجل اليمنى عند دخول المسجد واليسرى عند الخروج.', status:'pending', attempts:0, correct_attempts:0},
-  {author_alias:'سحابة', grade:'الرابع الابتدائي', subject:'العلوم', lesson:'الحيوانات', type:'mcq', question_text:'ما هو الحيوان؟', options:['قطة','قطة','قطة','قطة'], correct_index:0, explanation:'قطة', status:'rejected', attempts:0, correct_attempts:0}
+  {author_alias:'قمر', grade:'الثالث المتوسط', subject:'الرياضيات', lesson:'النسبة المئوية', type:'mcq', question_text:'٢٥٪ من ٨٠ تساوي:', options:['٢٠','٢٥','٣٢','٤٠'], correct_index:0, explanation:'٢٥٪ تعني الربع، وربع ٨٠ يساوي ٢٠.', status:'pending', attempts:0, correct_attempts:0},
+  {author_alias:'وردة', grade:'الثاني المتوسط', subject:'الدراسات الإسلامية', lesson:'آداب المسجد', type:'tf', question_text:'من آداب دخول المسجد تقديم الرجل اليمنى.', options:TF, correct_index:0, explanation:'يُستحب تقديم الرجل اليمنى عند دخول المسجد واليسرى عند الخروج.', status:'pending', attempts:0, correct_attempts:0},
+  {author_alias:'سحابة', grade:'الأول المتوسط', subject:'العلوم', lesson:'الحيوانات', type:'mcq', question_text:'ما هو الحيوان؟', options:['قطة','قطة','قطة','قطة'], correct_index:0, explanation:'قطة', status:'rejected', attempts:0, correct_attempts:0}
 ].map((q, i) => ({...q, id: 'demo-' + (i + 1), created_at: new Date(Date.now() - (i + 1) * 36e5 * 7).toISOString()}));
 
 /* ---------------- طبقة البيانات ---------------- */
@@ -935,7 +924,7 @@ function viewAbout(){
       <li>تنمية التفكير الناقد والقدرة على تمييز الإجابة الدقيقة من القريبة.</li>
       <li>تعزيز الاستعداد للاختبارات المركزية بطريقة ممتعة.</li>
       <li>بناء بنك أسئلة مدرسي معتمد يتجدد باستمرار.</li></ul></div>
-    <div class="about-sec"><h2>الفئة المستهدفة</h2><p>طالبات الصفوف العليا من المرحلة الابتدائية (الرابع إلى السادس) وطالبات المرحلة المتوسطة.</p></div>
+    <div class="about-sec"><h2>الفئة المستهدفة</h2><p>طالبات المرحلة المتوسطة: الأول والثاني والثالث المتوسط.</p></div>
     <div class="about-sec"><h2>آلية التنفيذ</h2><ol class="steps" style="grid-template-columns:1fr 1fr">
       <li><h3>التهيئة</h3><p>تعريف الطالبات بخصائص السؤال الجيد ونماذج من أسئلة الاختبارات.</p></li>
       <li><h3>الصياغة</h3><p>ترسل الطالبة سؤالها عبر المنصة باسم مستعار.</p></li>
